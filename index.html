@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <title>JOB</title>
+    <meta name="description" content="Hepsiburada marketplace admin">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="app">
+    </div>
+    <script src="/dist/build.js"></script>
+    <script id="clear-storage">
+        var keys = { ctrl: false, alt: false, enter: false };
+        var clearKeys = function () { keys.ctrl = keys.alt = keys.enter = false; };
+        var handler = function (event) {
+            var key = event.keyCode;
+            var i = key == 17 ? "ctrl" : key == 18 ? "alt" : key == 13 ? "enter" : "";
+            keys[i] = event.type === "keydown";
+
+            if (keys.ctrl && keys.alt && keys.enter) {
+                localStorage.clear();
+                clearKeys();
+                alert("Job: Storage cleared");
+            }
+        };
+        ['keydown', 'keyup'].forEach(function (event) { document.addEventListener(event, handler); });
+        document.addEventListener("focusout", clearKeys);
+    </script>
+</body>
+
+</html>
